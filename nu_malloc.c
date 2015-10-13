@@ -9,53 +9,6 @@
 typedef enum 
 { false, true } boolean;
 
-/* 
-void* nu_malloc(size_t size);
-First give the user the default amount of bytes with sbrk, including the header.
-Next embed the struct at the start of the free space created. It is a header to the
-free space.
-    
-        typedef struct _heap_block {
-        ???int canary;      //likely not implemented
-        int size;           //bytes requested by user
-        boolean free;       //whether the following data is being used
-        heap_block* next;   //a pointer the next heap header
-        } heap_block;
-
-UNDER THE CIRCUMSTANCE THAT A USER WISHES TO ENTER MEMORY 
-
-1. First check to see if head node is null or not. If it is null we know that there is
-    no linked list currently. We need to make one while giving the user memory.
-    
-    IIIIFFFFF
-    - if the linked list is not null, then we need to examine each header for possible
-        free amounts of memory. If there is a segment which is less than the amount
-        asked for, give them a pointer to it, while creating a new header and node
-        within the linked list.
-IIIIFFFFF
-    - if the head is null and the user requests memory outside of the predefined 
-        amount given (512) then we need to sbrk them a multiple of our predefined 
-        amount, that is greater than what is requested. This also requires the 
-        addition of the size of 2 structs worth, one for the current and next memory segment.
-            - this is followed by step 2, attaching or creating a new linked list
-
-    IIIIFFFFF
-    - if the user requests memory smaller than the predefined amount (512), then
-
-
-tl;dr - user requests memory
-            1. check if head is null
-            2. if not null check for free memory space in linked list.
-            3. if greater than predefined amount, give multiple of pre amount.
-            4. 
- 
-
-2 .See if there is a header of memory that is FREE AND IS THE EXACT AMOUNT OF MEMORY 
-    THE USER REQUESTED.
-        - simply give them a pointer to that memory location. 
-
-
-*/
 typedef struct _heap_block heap_block;
 struct _heap_block {
     int size;   
