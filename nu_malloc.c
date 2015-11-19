@@ -2,6 +2,9 @@
     Name: Eric Darr
     Project: Implmentation of malloc, realloc, calloc and free
     Notes: I still get some errors on the tester though everything seems to work ok thus far.
+
+    added for example.
+
 */
 
 #include <stdlib.h>
